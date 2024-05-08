@@ -12,13 +12,16 @@ icon = pygame.image.load("img/icon.png")
 pygame.display.set_icon(icon)
 
 target_image = pygame.image.load("img/button.png")
-target_width, target_height = 300, 65
-target_x = random.randint(0, SCREEN_WIDTH - target_width)
-target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+TARGET_WIDTH, TARGET_HEIGHT = target_image.get_size()
+target_x = random.randint(0, SCREEN_WIDTH - TARGET_WIDTH)
+target_y = random.randint(0, SCREEN_HEIGHT - TARGET_HEIGHT)
 
 
 running = True
 while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
     screen.fill(color)
     screen.blit(target_image, (target_x, target_y))
     pygame.display.update()
