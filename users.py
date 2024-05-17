@@ -27,7 +27,7 @@ class Admin(User):
 
   def remove_user(self):
     NAME = input("Введите имя пользователя, которого нужно исключить: ")
-    USER = next((user for user in self.users if user._User__name == NAME), None)
+    USER = next((user for user in self.users if user._User__name == NAME), None)  # mangling
     if USER is not None:
       print(f"Удален пользователь {USER.get_user()}")
       self.users.remove(USER)
@@ -39,7 +39,7 @@ class Admin(User):
       print(user.get_user())
 
 
-my_users = Admin(0, "admin")
+my_users = Admin(0, "admin") # Первого админа в список не добавляем
 running = True
 while running:
   action = int(input("Выберите действие: "
