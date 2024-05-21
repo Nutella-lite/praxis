@@ -1,3 +1,5 @@
+import pickle
+
 class Animal:
     def __init__(self, name, age):
         self.name = name
@@ -67,6 +69,23 @@ class Zoo:
         self.employees.append(employee)
         print(f"Добавлен работник {employee}")
 
+    def save_to_file(self, filename):
+        with open(filename, 'wb') as file:
+            pickle.dump(self, file)
+        print(f"Информация о зоопарке сохранена в файл {filename}")
+
+    @staticmethod
+    def load_from_file(filename):
+        try:
+            with open(filename, 'rb') as file:
+                zoo = pickle.load(file)
+            print(f"Информация о зоопарке загружена из файла {filename}")
+            return zoo
+        except FileNotFoundError:
+            print(f"Файл {filename} не найден")
+            return None
+
+
 
 class ZooKeeper:
     def feed_animal(self, animal):
@@ -78,9 +97,9 @@ class Veterinarian:
         print(f"Ветеринар лечит животное '{animal.name}'")
 
 
-zoo = Zoo()
-running = True
-while running:
+if __name__ == "__main__":
+    zoo = Zoo()
+while True:
     action = int(input("Выберите действие: "
                        "\n1 - добавить животное "
                        "\n2 - добавить птицу "
@@ -88,7 +107,9 @@ while running:
                        "\n4 - добавить рептилию "
                        "\n5 - добавить работника "
                        "\n6 - вывести весь зоопарк на экран "
-                       "\n7 - выход из программы \n"))
+                       "\n7 - сохранить данные в файл "
+                       "\n8 - извлечь данные из файла "
+                       "\n9 - выход из программы \n"))
     if action == 1:
         zoo.add_animal(Animal(input("Введите вид животного: "), int(input("Введите возраст животного: "))))
     elif action == 2:
@@ -109,5 +130,13 @@ while running:
         animal_sound(zoo.animals)
         for employee in zoo.employees:
             print(f"Работник: {employee}")
+    elif action == 7:
+        filename = input("Введите имя файла для сохранения: ")
+        zoo.save_to_file(filename)
+    elif action == 8:
+        filename = input("Введите имя файла для загрузки: ")
+        loaded_zoo = Zoo.load_from_file(filename)
+        if loaded_zoo:
+            zoo = loaded_zoo
     else:
-        running = False
+        break
