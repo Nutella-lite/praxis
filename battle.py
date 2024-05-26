@@ -65,24 +65,23 @@ class Fighter:
 
 class Monster:
     def __init__(self):
-        self.win = True
+        self.wins = True
 
     def repel(self, weapon):
         if weapon.is_effective_against_monster():
             print("Монстр побежден!")
-            self.win = False
+            self.wins = False
         else:
             print("Монстр побеждает... :(")
 
 
 print("Бой начинается!")
 fighter = Fighter()
+monster = Monster()
 while True:
     fighter.change_weapon()
     fighter.attack()
-
-    monster = Monster()
     monster.repel(fighter.weapon)
-
-    if not monster.win:
+    if not monster.wins:
         break
+
