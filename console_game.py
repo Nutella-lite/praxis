@@ -13,9 +13,11 @@ class Gladiator(ABC):
     def attack(self, opponent):
         pass
 
-    @abstractmethod
     def take_damage(self, damage):
-        pass
+        self.health -= damage
+        print(f"У {self.name}а осталось жизни {self.health}")
+        if self.health <= 0:
+            print(f"Он погибает  :(")
 
     def is_alive(self):
         return self.health > 0
@@ -30,12 +32,6 @@ class Maximus(Gladiator):
         opponent.take_damage(self.attack_power)
         self.attack_power -= 1
 
-    def take_damage(self, damage):
-        self.health -= damage
-        print(f"У {self.name}а осталось жизни {self.health}")
-        if self.health <= 0:
-            print(f"Он погибает :(")
-
 
 class Spartacus(Gladiator):
     def __init__(self):
@@ -45,12 +41,6 @@ class Spartacus(Gladiator):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
         opponent.take_damage(self.attack_power)
         self.attack_power -= 1
-
-    def take_damage(self, damage):
-        self.health -= damage
-        print(f"У {self.name}а осталось жизни {self.health}")
-        if self.health <= 0:
-            print(f"Он погибает :(")
 
 
 class Crixus(Gladiator):
@@ -62,11 +52,6 @@ class Crixus(Gladiator):
         opponent.take_damage(self.attack_power)
         self.attack_power -= 1
 
-    def take_damage(self, damage):
-        self.health -= damage
-        print(f"У {self.name}а осталось жизни {self.health}")
-        if self.health <= 0:
-            print(f"Он погибает :(")
 
 class Commodus(Gladiator):
     def __init__(self):
@@ -76,12 +61,6 @@ class Commodus(Gladiator):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
         opponent.take_damage(self.attack_power)
         self.attack_power -= 2
-
-    def take_damage(self, damage):
-        self.health -= damage
-        print(f"У {self.name}а осталось жизни {self.health}")
-        if self.health <= 0:
-            print(f"Он погибает :(")
 
 
 class Draw:
