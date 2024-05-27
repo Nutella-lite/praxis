@@ -4,6 +4,11 @@ import time
 
 
 class Gladiator(ABC):
+    def __init__(self, name, health, attack_power):
+        self.name = name
+        self.health = health
+        self.attack_power = attack_power
+
     @abstractmethod
     def attack(self, opponent):
         pass
@@ -18,9 +23,7 @@ class Gladiator(ABC):
 
 class Maximus(Gladiator):
     def __init__(self):
-        self.name = 'Максимус'
-        self.health = 100
-        self.attack_power = 25
+        super().__init__('Максимус', 100, 25)
 
     def attack(self, opponent):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
@@ -36,9 +39,7 @@ class Maximus(Gladiator):
 
 class Spartacus(Gladiator):
     def __init__(self):
-        self.name = 'Спартак'
-        self.health = 101
-        self.attack_power = 24
+        super().__init__('Спартак', 101, 24)
 
     def attack(self, opponent):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
@@ -54,9 +55,7 @@ class Spartacus(Gladiator):
 
 class Crixus(Gladiator):
     def __init__(self):
-        self.name = 'Крикс'
-        self.health = 99
-        self.attack_power = 26
+        super().__init__('Крикс', 99, 26)
 
     def attack(self, opponent):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
@@ -71,9 +70,7 @@ class Crixus(Gladiator):
 
 class Commodus(Gladiator):
     def __init__(self):
-        self.name = 'Коммод'
-        self.health = 98
-        self.attack_power = 27
+        super().__init__('Коммод', 98, 27)
 
     def attack(self, opponent):
         print(f"{self.name} бьёт {opponent.name}а с силой {self.attack_power}")
@@ -121,7 +118,7 @@ def rock_paper_scissors():
         print(f"Компьютер выбрал: {comp_choice}")
 
         if user_choice == comp_choice:
-            print("Ничья. Еще раз:\n")
+            print("Ничья. Еще раз:")
         elif outcome.get((comp_choice, user_choice), False):
             comp_win += 1
             print(f"Вы проиграли право на первый удар.")
@@ -149,8 +146,8 @@ class Battle:
             if glad2.is_alive():
                 glad2.attack(glad1)
                 time.sleep(3)
-            luck = random.randint(0, 1)
-            if luck == 1:
+            luck = random.randint(0, 2)
+            if luck <= 1:
                 if glad1.health > glad2.health:
                     lucky = glad2
                     unlucky = glad1
