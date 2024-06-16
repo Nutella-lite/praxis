@@ -25,7 +25,6 @@
     ```python
     import telebot
     import requests
-    import os
     from dotenv import load_dotenv
 
     # Загрузите переменные окружения из файла .env
@@ -82,7 +81,6 @@
     ```python
     import telebot
     import requests
-    import os
     import config
 
     TELEGRAM_API_TOKEN = config.TELEGRAM_API_TOKEN
