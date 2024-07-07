@@ -13,3 +13,4 @@ class DivanParsSpider(scrapy.Spider):
                 'price' : divan.css('div.q5Uds span::text').get(),
                 'link' : divan.css('a').attrib['href']
             }
+# scrapy crawl divan_pars
