@@ -14,3 +14,7 @@ print(df.loc[71])
 print(df[['Country name', 'Ladder score']][df['Ladder score'] > 6])
 print(df[['Country name', 'Ladder score', 'Perceptions of corruption']][df['Country name'].isin(['Israel', 'Russia', 'Ukraine'])])
 print(df.groupby('Regional indicator')['Ladder score'].mean())
+
+dz = pd.read_csv('data\\dz.csv')
+print(dz)
+print(dz.groupby('City').Salary.mean())
