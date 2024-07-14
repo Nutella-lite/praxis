@@ -1,0 +1,16 @@
+import pandas as pd
+
+df = pd.read_csv('data\\World-happiness-report-2024.csv')
+print(df.head(10))
+print(df.tail(10))
+print(df.info())
+print(df.describe())
+print(f"Количество стран: {len(df)}")
+print(f"Количество регионов: {df['Regional indicator'].nunique()}")
+print(f"Регионы: {df['Regional indicator'].unique()}")
+print(f"Стран в регионах: {df['Regional indicator'].value_counts()}")
+print(df[['Country name', 'Ladder score']])
+print(df.loc[71])
+print(df[['Country name', 'Ladder score']][df['Ladder score'] > 6])
+print(df[['Country name', 'Ladder score', 'Perceptions of corruption']][df['Country name'].isin(['Israel', 'Russia', 'Ukraine'])])
+print(df.groupby('Regional indicator')['Ladder score'].mean())
