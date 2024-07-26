@@ -41,7 +41,7 @@ def main():
     finally:
         browser.quit()
 
-    with open('parsed_data.csv', 'w', newline='', encoding='utf-8') as file:
+    with open('data/parsed_data.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file, delimiter='|')
         writer.writerow(['Name', 'Price', 'Link'])
         writer.writerows(all_data)
