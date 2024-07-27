@@ -4,6 +4,7 @@ app = Flask(__name__)
 @app.route("/")
 def main_page():
     return render_template("index.html")
+
 @app.route("/blog/")
 def blog_page():
     return render_template("blog.html")
