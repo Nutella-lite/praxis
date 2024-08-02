@@ -1,4 +1,4 @@
-Конечно! Вот пошаговая инструкция по созданию базового Django-проекта в PyCharm:
+Пошаговая инструкция по созданию базового Django-проекта в PyCharm:
 
 ### 1. Установите PyCharm и Python
 Убедитесь, что у вас установлены последняя версия PyCharm и Python. Вы можете скачать PyCharm [здесь](https://www.jetbrains.com/pycharm/download/) и Python [здесь](https://www.python.org/downloads/).
