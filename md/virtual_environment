@@ -1,0 +1,32 @@
+Tip: if your terminal is messed up, try the “reset” command.cd
+
+To create and activate virtual environment:
+sudo apt install python3.11-venv
+python3 -m venv .venv
+source .venv/bin/activate
+
+BTW - To move directory:
+sudo mv -v ~/devs ~/kali
+
+Чтобы при запуске виртуальной машины автоматически запускался python-файл необходимо создать сервис:
+sudo nano /etc/systemd/system/launch.service
+
+Прописать в сервисе через nano:
+[Unit]
+Description=My Bot Launcher
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/kali/kali/devs/.venv/bin/python3 /home/kali/kali/devs/gif.py
+Restart=always
+Environment=PYTHONPATH=/home/kali/kali/devs/.venv
+
+[Install]
+WantedBy=multi-user.target
+
+
+Перезагрзить все, чтобы программа увидела сервcис, и добавить сервис в автозапуск:
+sudo systemctl daemon-reload
+sudo systemctl start launch.service
+sudo systemctl enable launch.service
