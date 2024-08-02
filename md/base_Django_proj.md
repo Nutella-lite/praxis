@@ -136,7 +136,8 @@ pip install django
    python manage.py startapp myapp
    ```
    Замените `myapp` на имя вашего приложения.
-2. Добавьте ваше приложение в файл `settings.py` в секцию `INSTALLED_APPS`:
+   Как вариант, можно в окошке "Django Structure" нажать ссылку "Create App".
+3. Добавьте ваше приложение в файл `settings.py` в секцию `INSTALLED_APPS`:
    ```python
    INSTALLED_APPS = [
        ...
